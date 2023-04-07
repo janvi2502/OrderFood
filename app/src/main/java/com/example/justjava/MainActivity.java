@@ -34,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
     }
     public void decrement(View view){
         if (quantity == 1) {
-            // Show an error message as a toast
-            Toast.makeText(this, "You cannot have less than 1 coffee", Toast.LENGTH_SHORT).show();
-            // Exit this method early because there's nothing left to do
             return;
         }
         quantity = quantity - 1;
@@ -52,11 +49,11 @@ public class MainActivity extends AppCompatActivity {
         String name = nameEditable.toString();
 
          // Figure out if the user wants whipped cream topping
-        CheckBox whippedCreamCheckBox = findViewById(R.id.whipped_cream_checkbox);
+        CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
         boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
 
           //Figure out if the user wants chocolate topping
-        CheckBox chocolateCheckBox = findViewById(R.id.chocolate_checkbox);
+        CheckBox chocolateCheckBox = (CheckBox) findViewById(R.id.chocolate_checkbox);
         boolean hasChocolate = chocolateCheckBox.isChecked();
 
         int price = calculatePrice(hasWhippedCream,hasChocolate);
@@ -75,10 +72,10 @@ public class MainActivity extends AppCompatActivity {
     private int calculatePrice(boolean hasWhippedCream, boolean hasChocolate){
         int basePrice = 5;
         if(hasWhippedCream){
-            basePrice+=1;
+            basePrice=basePrice+1;
         }
         if(hasChocolate){
-            basePrice+=2;
+            basePrice= basePrice+2;
         }
         return quantity * basePrice;
     }
@@ -96,8 +93,7 @@ public class MainActivity extends AppCompatActivity {
     // This method displays the given quantity value on the screen
     @SuppressLint("SetTextI18n")
     private void displayQuantity(int numberOfCoffees){
-        TextView quantityTextView = findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + numberOfCoffees);
+        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + numberOfCoffees);
     }
 
